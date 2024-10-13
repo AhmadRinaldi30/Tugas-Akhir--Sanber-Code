@@ -1,7 +1,7 @@
 const { $ } = require('@wdio/globals')
-const Page = require('./page');
+// const page = require('./page')
 
-class loginpage extends page{
+class loginpage{
   //Disini didefinisikan locator dari element
   get emailInput() {
     return $('#email'); //locator field email
@@ -27,7 +27,7 @@ class loginpage extends page{
   }
 
   async open() {
-    await super.open('https://kasirdemo.vercel.app')
+    await browser.url('https://kasirdemo.vercel.app')
   }
 
 

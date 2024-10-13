@@ -1,3 +1,5 @@
+const { $ } = require('@wdio/globals')
+// const Page = require('./page');
 
 class DaftarPage{
 
@@ -19,6 +21,10 @@ class DaftarPage{
 
     get errorMsg() {
         return $('//div[@role="alert"]'); //locator error message
+    }
+
+    async open(){
+        await super.open('https://kasirdemo.vercel.app/register')
     }
 
     async daftar(nama,email,password){
