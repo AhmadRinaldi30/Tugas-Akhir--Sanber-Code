@@ -1,5 +1,7 @@
+// import loginPage from "./login.page"
 
-class product{
+class productpage{
+
     get klikProduct(){ return $('//div[@class="css-tnxwfz"]//a[6]')}
     // add object
     get klikTambah(){ return $('//a[normalize-space()="tambah"]')}
@@ -16,7 +18,7 @@ class product{
     }
 
     // edit object
-    get klikAction(){ return $('//button[@id="menu-button-112"]')}
+    get klikAction(){ return $('//button[@class="chakra-button chakra-menu__menu-button css-pu8osu"]')}
     get klikUbah(){ return $('/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/table[1]/tbody[1]/tr[1]/td[10]/div[1]/div[1]/a[1]')}
     get ubahNama(){ return $('//input[@id="nama"]')}
     get ubahDeskripsi(){ return $('//input[@id="deskripsi"]')}
@@ -50,9 +52,14 @@ class product{
         return $('//div[@role="alert"]'); //locator error message
     }
 
-
+    async open(){
+        await browser.url('hidayah33@gmail.com', 'password')
+    }
+    
     async tambahProduct(nama, deskripsi, HB, HJ, Stk) {
         await this.klikProduct.click();
+        await this.klikAction.click();
+        await this.klikTambah.click();
         await this.inputNama.setValue(nama);
         await this.inputDeskripsi.setValue(deskripsi);
         await this.inputHargaBeli.setValue(HB);
@@ -61,11 +68,12 @@ class product{
         await this.inputCategori.click();
         await this.pilihCategori.click();
         await this.klikSimpanAdd.click();
-        await this.msgBerhasilTambah.getText();
       }
 
     async ubahProduct(nama, deskripsi, HB, HJ, Stk){
         await this.klikProduct.click();
+        await this.klikAction.click();
+        await this.klikUbah.click();
         await this.ubahNama.setValue(nama);
         await this.ubahDeskripsi.setValue(deskripsi);
         await this.ubahHargaBeli.setValue(HB);
@@ -74,14 +82,25 @@ class product{
         await this.ubahCategori.click();
         await this.pilihUbahCategori.click();
         await this.klikSimpanUbah.click();
-        await this.msgBerhasilUbah.getText();
     }
     
     async deleteProduct(){
         await this.klikProduct.click();
+        await this.klikAction.click();
         await this.klikHapus.click();
         await this.klikModalDelete.click();
-        await this.msgBerhasilDelete.getText();
+    }
+
+    async assertPassedMessageAdd(expectedPassedMessage){
+        await expect(this.msgBerhasilTambah).toHaveTextContaining(expectedPassedMessage)
+    }
+
+    async assertPassedMessageUbah(expectedPassedMessage){
+        await expect(this.msgBerhasilUbah).toHaveTextContaining(expectedPassedMessage)
+    }
+
+    async assertPassedMessageDel(expectedPassedMessage){
+        await expect(this.msgBerhasilDelete).toHaveTextContaining(expectedPassedMessage)
     }
 
 
@@ -92,6 +111,7 @@ class product{
     async getErrorMessage() {
         return this.errorMsg.getText();
     }
-
-
 }
+
+
+module.exports = new productpage();

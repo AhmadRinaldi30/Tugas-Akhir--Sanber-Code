@@ -14,5 +14,5 @@ Feature: product functional test
     @hapus_product
     Scenario: hapus Successfully with valid input data format
         Given I open Kasir aja Website hapus product page
-        When I edit product with valid format
+        When I hapus product with valid format
         Then I should see an passed message

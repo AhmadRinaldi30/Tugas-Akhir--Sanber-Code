@@ -1,12 +1,12 @@
 const { loginpage } = require("../pages/login.page.js");
-// const { page } = require("../pages/page")
+const { page } = require("../pages/page")
 // const dashboard = require("../pages/dashboard.page");
-const { expect, $ } = require('@wdio/globals');
+// const { expect, $ } = require('@wdio/globals');
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 
 //  scenario 1
 Given(/^I open Kasir aja Website$/, async() =>{
-    await loginpage.open()
+    await page.open('https://kasirdemo.vercel.app/');
     await browser.pause(20000);
 });
 
@@ -21,7 +21,7 @@ Then(/^I should be on the dashboard page$/, async() =>{
 //Scenario 2
 
 Given(/^I open Kasir aja Website$/, async() => {
-    await loginpage.open()
+    await page.open('https://kasirdemo.vercel.app/');
     await browser.pause(2000);
 })
 
@@ -36,7 +36,7 @@ Then (/^I should see an error message$/, async() =>{
 //Scenario 3
 
 Given(/^I open Kasir aja Website$/, async() => {
-    await loginpage.open()
+    page.open('https://kasirdemo.vercel.app/');
     await browser.pause(2000);
 })
 

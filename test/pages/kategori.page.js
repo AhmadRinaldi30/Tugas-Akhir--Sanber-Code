@@ -1,7 +1,8 @@
-const { $, expect } = require('@wdio/globals')
-// const loginpage = require('./login.page');
+// const { $, expect } = require('@wdio/globals')
+// const { default: loginPage } = require('./login.page')
 
 class kategori{
+
     get klikKategori(){ return $('//div[@class="css-tnxwfz"]//a[5]')}
     // add object
     get klikTambah(){ return $('//a[normalize-space()="tambah"]')}
@@ -42,7 +43,7 @@ class kategori{
     }
 
     async open(){
-        await super.login('hidayah33@gmail.com', 'password')
+        await browser.url('hidayah33@gmail.com', 'password')
     }
 
     async tambahCategori(nama, deskripsi) {

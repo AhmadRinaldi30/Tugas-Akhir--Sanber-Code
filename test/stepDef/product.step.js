@@ -1,52 +1,53 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
-const { categoripage } = require("../pages/kategori.page");
+const { productpage } = require("../pages/product.page");
 const { expect, $ } = require('@wdio/globals')
 
 
 // scenario 1
-Given(/^I open Kasir aja Website categori page$/, async()=>{
-    await categoripage.open();
+Given(/^I open Kasir aja Website product page$/, async()=>{
+    await productpage.open();
     await browser.pause(2000);
 })
 
-When(/^I add categori with valid format$/, async()=>{
-    await categoripage.tambahCategori('Categori testing 1', 'makanan berat');
+When(/^I add product with valid format$/, async()=>{
+    await productpage.tambahProduct('Categori testing 1', 'makanan berat');
 })
 
 Then(/^I should see an passed message$/,async()=>{
-    await expect(browser).toHaveUrl('https://kasirdemo.vercel.app/categories');
-    await categoripage.assertPassedMessageAdd('item ditambahkan')
+    await expect(browser).toHaveUrl('https://kasirdemo.vercel.app/products');
+    await productpage.assertPassedMessageAdd('item ditambahkan')
 })
 
 
 
 //scenario 2
-Given(/^I open Kasir aja Website edit categori page$/, async()=>{
-    await categoripage.open();
+Given(/^I open Kasir aja Website edit product page$/, async()=>{
+    await productpage.open();
     await browser.pause(2000);
 })
 
-When(/^I edit categori with valid format$/, async()=>{
-    await categoripage.ubahCategori('Categori testing ubah', 'makanan ubah');
+When(/^I edit product with valid format$/, async()=>{
+    await productpage.ubahProduct('Categori testing ubah', 'makanan ubah');
 })
 
 Then(/^I should see an passed message$/,async()=>{
-    await expect(browser).toHaveUrl('https://kasirdemo.vercel.app/categories');
-    await categoripage.assertPassedMessageUbah('item diubah')
+    await expect(browser).toHaveUrl('https://kasirdemo.vercel.app/products');
+    await productpage.assertPassedMessageUbah('item diubah')
 })
+
 
 //scenario 3
 
-Given(/^I open Kasir aja Website hapus categori page$/, async()=>{
-    await categoripage.open();
+Given(/^I open Kasir aja Website hapus product page$/, async()=>{
+    await productpage.open();
     await browser.pause(2000);
 })
 
-When(/^I daftar with email invalid format$/, async()=>{
-    await categoripage.deleteCategori();
+When(/^I hapus product with valid format$/, async()=>{
+    await productpage.deleteProduct();
 })
 
-Then(/^I should see an error message$/,async()=>{
-    await expect(browser).toHaveUrl('https://kasirdemo.vercel.app/categories');
-    await categoripage.assertPassedMessageUbah('item dihapus')
+Then(/^I should see an passed message$/,async()=>{
+    await expect(browser).toHaveUrl('https://kasirdemo.vercel.app/products');
+    await productpage.assertPassedMessageDel('item dihapus')
 })

@@ -1,7 +1,7 @@
-const { $ } = require('@wdio/globals')
-// const page = require('./page')
+// import Page from './page';
+// const { $ } = require('@wdio/globals')
 
-class loginpage{
+class loginPage{
   //Disini didefinisikan locator dari element
   get emailInput() {
     return $('#email'); //locator field email
@@ -26,11 +26,6 @@ class loginpage{
     await this.loginButton.click();
   }
 
-  async open() {
-    await browser.url('https://kasirdemo.vercel.app')
-  }
-
-
   async assertErrorMessage(expectedErrorMessage) {
     await expect(this.errorMsg).toHaveTextContaining(expectedErrorMessage);
   }
@@ -40,4 +35,4 @@ class loginpage{
   }
 }
 
-export default new loginpage()
+export default new loginPage()
