@@ -1,5 +1,5 @@
 // const { $, expect } = require('@wdio/globals')
-// const { default: loginPage } = require('./login.page')
+// const { default: loginPage } = require("./login.page")
 
 class kategori{
 
@@ -8,16 +8,16 @@ class kategori{
     get klikTambah(){ return $('//a[normalize-space()="tambah"]')}
     get inputNama(){ return $('//input[@id="nama"]')}
     get inputDeskripsi(){ return $('//input[@id="deskripsi"]')}
-    get klikSimpanAdd(){ return $('//button[normalize-space()="simpan"]')}
+    get klikSimpanAdd(){ return $('button[class="chakra-button css-l5lnz6"]')}
     get msgBerhasilTambah(){
-        return $('//*/text()[normalize-space(.)="item ditambahkan"]/parent::*')
+        return $('//div[@class="chakra-alert__desc css-zycdy9"]')
     }
 
     // edit object
     get klikAction(){ return $('//button[@class="chakra-button chakra-menu__menu-button css-pu8osu"]')}
-    get klikUbah(){ return $('//a[@id="menu-list-146-menuitem-143"]')}
-    get ubahNama(){ return $('//input[@id="nama"')}
-    get ubahDeskripsi(){ return $('//input[@id="deskripsi"')}
+    get klikUbah(){ return $('//a[@class="chakra-menu__menuitem css-13c7rae"]')}
+    get ubahNama(){ return $('//input[@type="text"][@id="nama"]')}
+    get ubahDeskripsi(){ return $('//input[@type="text"][@id="deskripsi"]')}
     get klikSimpanUbah(){ return $('//button[normalize-space()="simpan"]')}
     get msgBerhasilUbah(){
         return $('//*/text()[normalize-space(.)="item diubah"]/parent::*')
@@ -25,7 +25,7 @@ class kategori{
 
     // hapus object
     get klikHapus(){ 
-        return $('//button[@id="menu-list-219-menuitem-217"]')
+        return $('//button[@class="chakra-menu__menuitem css-13c7rae"]')
     }
     get klikModalDelete(){
         return $('//button[normalize-space()="Delete"]')
@@ -43,7 +43,7 @@ class kategori{
     }
 
     async open(){
-        await browser.url('hidayah33@gmail.com', 'password')
+        await browser.url('https://kasirdemo.vercel.app/')
     }
 
     async tambahCategori(nama, deskripsi) {

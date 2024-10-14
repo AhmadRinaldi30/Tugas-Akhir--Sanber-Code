@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "wdio": "wdio run ./wdio.conf.js --cucumberOpts.tagExpression",
+    "wdio": "wdio run ./wdio.conf.js",
     "allure-report": "allure generate reports/allure-results/ --clean && allure open"
   },
   "author": "Aldi",

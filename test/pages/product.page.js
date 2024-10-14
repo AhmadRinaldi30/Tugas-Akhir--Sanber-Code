@@ -53,7 +53,10 @@ class productpage{
     }
 
     async open(){
-        await browser.url('hidayah33@gmail.com', 'password')
+        await browser.url('https://kasirdemo.vercel.app/')
+        await this.emailInput.setValue(email);
+        await this.passwordInput.setValue(password);
+        await this.loginButton.click();
     }
     
     async tambahProduct(nama, deskripsi, HB, HJ, Stk) {

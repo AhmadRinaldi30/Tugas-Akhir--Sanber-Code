@@ -19,6 +19,10 @@ class loginPage{
     return $('//div[@role="alert"]'); //locator error message
   }
 
+  async alert(){
+    await this.errorMsg.toExist()
+  }
+
   //Disini didefinisikan action yang akan dilakukan kepada element
   async login(email, password) {
     await this.emailInput.setValue(email);
@@ -27,7 +31,7 @@ class loginPage{
   }
 
   async assertErrorMessage(expectedErrorMessage) {
-    await expect(this.errorMsg).toHaveTextContaining(expectedErrorMessage);
+    await expect(this.errorMsg).toHaveText(expectedErrorMessage);
   }
 
   async getErrorMessage() {
@@ -35,4 +39,4 @@ class loginPage{
   }
 }
 
-export default new loginPage()
+module.exports = new loginPage();
