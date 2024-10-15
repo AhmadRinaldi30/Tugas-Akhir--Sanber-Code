@@ -25,7 +25,9 @@ Then (/^I should see an error message$/, async() =>{
 
 //Scenario 2
 
-Given(/^I open Kasir aja Website login$/, async() => {
+Given(/^I open Kasir aja Website login 2$/, async() => {
+    
+    await Page.open('https://kasirdemo.vercel.app/');
     await browser.pause(5000);
 })
 
@@ -43,7 +45,8 @@ Then (/^I should see an error message$/, async() =>{
 
 
 //  scenario 1
-Given(/^I open Kasir aja Website Login$/, async() =>{
+Given(/^I open Kasir aja Website Login 3$/, async() =>{
+    await Page.open('https://kasirdemo.vercel.app/');
     await browser.pause(20000);
 });
 

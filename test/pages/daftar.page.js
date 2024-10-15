@@ -31,8 +31,8 @@ class DaftarPage{
         (await this.inputNamaToko).setValue(nama);
         (await this.inputEmailDaftar).setValue(email);
         (await this.inputPasswordDaftar).setValue(password);
+         await this.loginButton.click();
     }
-
 
     async assertErrorMessage(expectedErrorMessage) {
         await expect(this.errorMsg).toHaveTextContaining(expectedErrorMessage);
